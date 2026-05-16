@@ -1,0 +1,174 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #F1F5F8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Centered Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    font-size: 3rem;
+    margin-bottom: 50px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+h2 {
+    color: #4A90E2;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+/* Form Styling */
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transform: translateY(-50px);
+    transition: all 0.3s ease;
+}
+
+.login-container:hover {
+    transform: translateY(0);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+input {
+    padding: 15px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    border-color: #4A90E2;
+    box-shadow: 0 0 10px rgba(74, 144, 226, 0.4);
+}
+
+input::placeholder {
+    color: #888;
+}
+
+button {
+    padding: 15px;
+    background-color: #4A90E2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #357ABD;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(1);
+}
+
+/* Card Styling for Dashboard */
+.dashboard {
+    background-color: #fff;
+    padding: 40px;
+    margin-top: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.dashboard h2 {
+    color: #4A90E2;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.dashboard p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.dashboard a {
+    color: #4A90E2;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.dashboard a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 20px;
+    }
+
+    .login-container {
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .dashboard h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .login-container {
+        width: 100%;
+        padding: 30px;
+    }
+
+    button {
+        padding: 12px;
+        font-size: 1rem;
+    }
+
+    input {
+        padding: 12px;
+        width: 100%;
+    }
+}

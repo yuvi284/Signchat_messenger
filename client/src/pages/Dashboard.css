@@ -1,0 +1,545 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    /* CHANGE: Use 100dvh (Dynamic Viewport Height) for mobile browsers */
+    height: 100vh;
+    /* Fallback */
+    height: 100dvh;
+    /* Fixes address bar cutoff issue */
+    background: #f0f2f5;
+    overflow: hidden;
+    overscroll-behavior: none;
+    position: relative;
+    /* Prevents whole page scrolling */
+}
+
+/* Sidebar Styles */
+.sidebar {
+    display: flex;
+    flex-direction: row;
+    width: 25%;
+    min-width: 25%;
+    max-width: 25%;
+    background: #202c33;
+    color: white;
+    border-right: 1px solid #2a3942;
+    transition: transform 0.3s ease;
+}
+
+.sidebar-actions-strip {
+    width: 60px;
+    background: #111b21;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1rem 0;
+    border-right: 1px solid #222;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
+.sidebar-actions-strip .top-space {
+    flex-grow: 1;
+}
+
+.sidebar-actions-strip button {
+    background: #2a3942;
+    border: none;
+    color: white;
+    padding: 0.6rem;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+}
+
+.sidebar-actions-strip button:hover {
+    background: #3b4a54;
+}
+
+.sidebar-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.brand {
+    font-size: 1.2rem;
+    padding: 1rem;
+    background: #202c33;
+    border-bottom: 1px solid #333;
+}
+
+.search-box {
+    padding: 0.5rem;
+    background: #111b21;
+    border-bottom: 1px solid #222;
+}
+
+.search-box input {
+    width: 95%;
+    padding: 0.5rem;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background: #2a3942;
+    color: white;
+}
+
+.contact-list {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.contact-item {
+    padding: 1rem;
+    cursor: pointer;
+    border-bottom: 1px solid #222;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: #e9edef;
+}
+
+.contact-item:hover,
+.contact-item.active {
+    background: #2a3942;
+}
+
+.contact-menu-btn {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: #aebac1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-menu-btn:hover {
+    background: #3b4a54;
+    border: none;
+    color: white;
+}
+
+.contact-actions-menu {
+    position: absolute;
+    top: 34px;
+    right: 0;
+    min-width: 145px;
+    background: #111b21;
+    border: 1px solid #2a3942;
+    border-radius: 6px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    padding: 4px;
+    z-index: 50;
+}
+
+.contact-actions-menu button {
+    width: 100%;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 4px;
+    background: transparent;
+    color: #e9edef;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.contact-actions-menu button:hover {
+    background: #2a3942;
+    border: none;
+}
+
+.contact-actions-menu button.danger {
+    color: #ff8a8a;
+}
+
+.chat-area.show {
+    max-width: 70%;
+}
+
+/* Chat Area Styles */
+.chat-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background: url('/images/background2.jpg') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    min-width: 0;
+    height: 100%;
+    /* Forces it to fill the dashboard exactly, not more */
+    overflow: hidden;
+
+}
+
+.chat-header {
+    background: #202c33;
+    color: white;
+    padding: 1rem;
+    padding-right: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 1px solid #333;
+}
+
+.header-user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.header-actions i {
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #aebac1;
+    transition: color 0.2s;
+}
+
+.header-actions i:hover {
+    color: white;
+}
+
+.chat-history {
+    flex-grow: 1;
+    padding: 1.2rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.chat-message {
+    position: relative;
+    max-width: 60%;
+    padding: 0.7rem 1rem;
+    margin: 0.4rem 0;
+    border-radius: 7px;
+    word-wrap: break-word;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-message.sent {
+    background: #005c4b;
+    color: #e7ffdb;
+    align-self: flex-end;
+}
+
+.chat-message.received {
+    background: #202c33;
+    color: #e9edef;
+    align-self: flex-start;
+}
+
+.message-meta {
+    font-size: 0.75rem;
+    margin-top: 4px;
+    color: #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.message-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+    justify-content: flex-end;
+}
+
+.message-action-btn {
+    font-size: 0.8rem;
+    padding: 2px 6px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.chat-input-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.7rem;
+    justify-content: space-between;
+    gap: 0.5rem;
+    background: #202c33;
+    border-top: 1px solid #333;
+}
+
+.chat-input-container textarea {
+    width: 98%;
+    padding: 0.6rem;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: 0.9rem;
+    background: #2a3942;
+    color: white;
+}
+
+.chat-input-actions {
+    margin-top: 0.5rem;
+    display: flex;
+    float: left;
+    align-items: left;
+    justify-content: left;
+    gap: 0.5rem;
+}
+
+.chat-input-actions select,
+.chat-input-actions button {
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background: #2a3942;
+    color: white;
+    font-size: 0.85rem;
+}
+
+button.send-btn {
+    background: #008069;
+    margin-left: 10px;
+}
+
+/* Welcome Screen */
+.welcome-message {
+    text-align: center;
+    margin: auto;
+    color: #8696a0;
+}
+
+.welcome-message h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+    font-weight: 300;
+}
+
+.features {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.feature-card {
+    background: rgba(42, 57, 66, 0.6);
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 200px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.feature-card i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #008069;
+}
+
+.feature-card h3 {
+    color: #e9edef;
+}
+
+/* Back Button Visibility */
+.back-btn {
+    display: none;
+    /* Hidden by default on desktop */
+}
+
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    min-width: 0;
+    height: 100%;
+    /* This wrapper fills the space next to the sidebar */
+    background: url('/images/background2.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+/* --- Mobile Responsive Logic (< 700px) --- */
+@media (max-width: 700px) {
+
+    .dashboard-container {
+        position: relative;
+        overflow: hidden;
+        /* Ensure no horizontal scrolling */
+    }
+
+    /* 1. Sidebar Default State (Full Screen on Mobile) */
+    .sidebar {
+        width: 100%;
+        max-width: none;
+        height: 100%;
+        position: absolute;
+        /* Sit on top */
+        z-index: 20;
+        left: 0;
+        top: 0;
+        transition: width 0.3s ease;
+        /* Smooth animation when shrinking */
+    }
+
+    /* 2. Sidebar Collapsed State (Strip Only) 
+       This triggers when 'mobile-collapsed' class is added by React */
+    .sidebar.mobile-collapsed {
+        width: 60px;
+        /* Shrink to exactly the width of the strip */
+        min-width: 60px;
+        border-right: 1px solid #333;
+    }
+
+    /* Hide the list content when collapsed */
+    .sidebar.mobile-collapsed .sidebar-content {
+        display: none;
+    }
+
+    /* Style for the new Back Button in the strip */
+    .sidebar-actions-strip .nav-back-btn {
+        background-color: #008069;
+        /* Green color to make it obvious */
+        margin-bottom: 10px;
+    }
+
+    /* 3. Chat Area Logic */
+
+    /* When Chat Area is active */
+    .main-content.show {
+        display: flex !important;
+        width: 100%;
+        max-width: 100%;
+        padding-left: 60px;
+        /* Keep space for sidebar strip */
+        z-index: 10;
+    }
+
+    /* Hide the Welcome Message on mobile completely */
+    .welcome-message {
+        display: none;
+    }
+
+    .chat-header {
+        /* Add more padding so it doesn't touch the top status bar */
+        padding: 15px 30px 10px 10px;
+        min-height: 70px;
+        /* Force a minimum height */
+    }
+
+    .chat-header img {
+        flex-shrink: 0;
+        /* Prevents the image from being squashed to 0px */
+    }
+
+    .chat-history {
+        padding: 0.75rem;
+    }
+
+    .chat-message {
+        max-width: 86%;
+    }
+
+    /* Hide the chat-header back button since we are using the Sidebar strip button now */
+    .chat-header .back-btn {
+        display: none !important;
+    }
+
+    .main-content {
+        display: none;
+        /* Hidden by default */
+        width: 100%;
+        height: 100%;
+        padding-left: 60px;
+        /* Make space for the Sidebar Strip */
+    }
+
+    /* 3. RESET the inner .chat-area so it fits perfectly inside */
+    .chat-area {
+        width: 100%;
+        height: 100%;
+        padding-left: 0;
+        /* IMPORTANT: Don't add double padding */
+        background-color: #e5ddd5;
+        /* Fallback background color */
+    }
+
+    .chat-input-container {
+        /* Add padding at bottom to lift buttons above the phone's home bar */
+        padding-bottom: 25px;
+
+        /* Optional: Use "safe area" variable for iPhones */
+        padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+        background: #202c33;
+        padding-left: 10px;
+    }
+
+    .chat-input-actions {
+        flex-wrap: nowrap;
+        /* Prevent buttons from wrapping */
+        overflow-x: auto;
+        /* Allow scrolling if buttons are too wide */
+        padding-bottom: 5px;
+
+    }
+
+    /* Make buttons slightly smaller on mobile to fit */
+    .chat-input-actions button,
+    .chat-input-actions select {
+        padding: 0.4rem 0.6rem;
+        font-size: 16px;
+    }
+
+    .chat-input-container textarea,
+    .chat-input-container button {
+        font-size: 16px;
+    }
+
+    .chat-input-container>div:last-child {
+        gap: 0.5rem;
+        min-width: 0;
+    }
+
+    .chat-input-container textarea {
+        flex: 1;
+        min-width: 0;
+        width: auto;
+    }
+
+    button.send-btn {
+        flex-shrink: 0;
+        margin-left: 0;
+    }
+}

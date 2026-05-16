@@ -1,0 +1,137 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Darker overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content.dark-theme {
+    background-color: #111b21;
+    /* WhatsApp Dark Grey */
+    padding: 24px;
+    border-radius: 16px;
+    width: auto;
+    min-width: 300px;
+    max-width: 90vw;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: #e9edef;
+    position: relative;
+    /* For absolute positioning of close button */
+}
+
+.close-icon-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #aebac1;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    z-index: 10;
+}
+
+.close-icon-btn:hover {
+    color: #e9edef;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #e9edef;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.modal-body {
+    overflow-x: auto;
+}
+
+/* Prediction Grid Styles */
+.prediction-grid {
+    display: flex;
+    gap: 40px;
+    /* Space between columns */
+    padding: 10px;
+}
+
+.prediction-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 120px;
+}
+
+.column-header {
+    font-size: 18px;
+    color: #ffab76;
+    /* Orange tint usually looks good or standard white */
+    color: #e9edef;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.candidate-row {
+    display: flex;
+    justify-content: space-between;
+    /* Space out Word and % */
+    font-size: 16px;
+    color: #aebac1;
+    gap: 10px;
+}
+
+.candidate-row.top-candidate {
+    font-weight: bold;
+    color: #e9edef;
+    /* Highlight top candidate */
+    font-size: 20px;
+}
+
+.candidate-word {
+    text-align: left;
+}
+
+.candidate-conf {
+    text-align: right;
+    opacity: 0.8;
+}
+
+/* Hide Footer/Buttons if not needed based on image, but keeping fallback style just in case */
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.modal-btn {
+    padding: 10px 24px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+}
+
+.confirm-btn {
+    background-color: #00a884;
+    color: white;
+}
+
+.cancel-btn {
+    background-color: transparent;
+    color: #00a884;
+    border: 1px solid #00a884;
+}
