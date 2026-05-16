@@ -1,6 +1,5 @@
 # Indian Sign Language (ISL) Translator & Chat Platform
 
-![ISL App Banner](https://via.placeholder.com/1000x300?text=Indian+Sign+Language+Chat+%26+Translator)
 
 A comprehensive, real-time communication platform designed to bridge the communication gap between individuals who use Indian Sign Language (ISL) and those who do not. The application functions both as a traditional chat application and as a bidirectional translator (Sign-to-Text and Text-to-Sign).
 
@@ -22,22 +21,26 @@ A comprehensive, real-time communication platform designed to bridge the communi
 
 ## 🚀 Getting Started
 
-### Prerequisites
-*   Docker and Docker Compose
-*   Python 3.10+ (If running locally)
-*   MySQL Server
-
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yuvi284/sign-language-translator.git
+   git clone https://github.com/yuvi284/Signchat_messenger.git
    ```
 2. Set up environment variables:
    Copy `.env.example` to `.env` and fill in your database credentials.
-3. Start the application using Docker:
-   ```bash
-   docker-compose up --build
-   ```
+
+3. build frontend:
+   in different terminal run
+   `cd client` then `npm run build`
+4. set virual environment:
+   in another terminal
+   `python -m venv env-name`
+5. download requirements:
+   after activating env
+   `pip install -r requirements.txt`
+6. run app:
+   `python app.py`
+   
 
 ## 🧠 Machine Learning Architecture
 *   **Pose Extraction:** `inference_lstm_sentence.py` extracts spatial coordinates from video frames using MediaPipe.
